@@ -16,12 +16,11 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    namespace: argocd
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: bootstrap.yaml
     repoURL: https://github.com/crenshaw-dev/executor-plugins-demo
+    path: .
   syncPolicy:
     automated:
       prune: true
