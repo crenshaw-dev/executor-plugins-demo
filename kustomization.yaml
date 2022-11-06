@@ -2,3 +2,4 @@ resources:
   - argo-cd
   - argo-events
   - argo-workflows
+  - ingress-nginx
