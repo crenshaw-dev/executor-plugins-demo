@@ -1,0 +1,4 @@
+namespace: argo-events
+
+resources:
+  - https://raw.githubusercontent.com/argoproj/argo-events/master/manifests/install.yaml

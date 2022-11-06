@@ -1,0 +1,4 @@
+namespace: argo
+
+resources:
+  - https://raw.githubusercontent.com/argoproj/argo-workflows/master/manifests/quick-start-minimal.yaml
