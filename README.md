@@ -19,3 +19,23 @@ Log in using the username `admin` and the password retrieved above.
 ```shell
 kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
+
+Create a GitHub API token. Grant it read/write access on pull requests and read access on webhooks.
+
+Create a secret with the token:
+
+```shell
+# Copy your token to the clipboard, then write it to a file:
+pbpaste > token
+```
+
+Configure a webhook to point to `https://<your public IP address>/push`.
+
+* Use Content type `applicaton/json`
+* Create a new, secure secret and write it to a file called `secret` (`pbpaste > secret`)
+* Disable SSL verification - this is a demo, so we're not using a real certificate
+* Only enable Pull request events
+
+```shell
+kubectl create secret generic github-token --from-file token --from-file -n argo-events
+```
