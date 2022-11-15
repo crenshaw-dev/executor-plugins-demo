@@ -8,3 +8,4 @@ resources:
 
 patchesStrategicMerge:
   - resource-patches.yaml
+  - workflow-controller-patch.yaml

@@ -24,11 +24,16 @@ spec:
               spec:
                 arguments:
                   parameters:
-                    - name: body
+                    - name: number
+                    - name: sha
                 workflowTemplateRef:
                   name: argocd-diff-github-comment
           parameters:
             - src:
                 dependencyName: test-dep
-                dataKey: body
+                dataKey: body.number
               dest: spec.arguments.parameters.0.value
+            - src:
+                dependencyName: test-dep
+                dataKey: body.pull_request.head.sha
+              dest: spec.arguments.parameters.1.value

@@ -3,31 +3,37 @@ kind: WorkflowTemplate
 metadata:
   name: argocd-diff-github-comment
 spec:
-  arguments:
-    parameters:
-      - name: body
+  entrypoint: main
   templates:
     - name: main
       steps:
         - - name: get-diff
             template: get-diff
-            parameters:
-              - name: issue-number
-                value: "{{workflow.parameters.body}}"
+            arguments:
+              parameters:
+                - name: issue-number
+                  value: "{{workflow.parameters.number}}"
+                - name: revision
+                  value: "{{workflow.parameters.sha}}"
         - - name: comment
             template: comment
             arguments:
               parameters:
                 - name: diff
                   value: "{{steps.get-diff.outputs.result}}"
+                - name: issue-number
+                  value: "{{workflow.parameters.number}}"
     - name: get-diff
+      inputs:
+        parameters:
+          - name: revision
       plugin:
         argocd:
           app:
             diff:
               app:
-                name: guestbook
-              revision: 382b85852fa33f13d4987424853c5206b9231ff0
+                name: bootstrap
+              revision: "{{inputs.parameters.revision}}"
     - name: comment
       inputs:
         parameters:
