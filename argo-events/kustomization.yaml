@@ -1,4 +1,12 @@
 namespace: argo-events
 
 resources:
-  - https://raw.githubusercontent.com/argoproj/argo-events/master/manifests/install.yaml
+  - https://raw.githubusercontent.com/argoproj/argo-events/stable/manifests/install.yaml
+  - https://raw.githubusercontent.com/argoproj/argo-events/stable/examples/eventbus/native.yaml
+  #- ingress.yaml
+  - webhook-event-source.yaml
+  - webhook-event-sensor-rbac.yaml
+  - webhook-sensor.yaml
+
+patchesStrategicMerge:
+  - resource-patches.yaml

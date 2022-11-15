@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: EventSource
+metadata:
+  name: github
+spec:
+  service:
+    ports:
+      - name: example
+        port: 12000
+        targetPort: 12000
+  github:
+    example:
+      repositories:
+        - owner: crenshaw-dev
+          names:
+            - executor-plugins-demo
+      webhook:
+        endpoint: /push
+        port: "12000"
+        method: POST
+      events:
+        - "*"
+      webhookSecret:
+        name: github-access
+        key: secret
+      insecure: true
+      active: true
+      contentType: json
