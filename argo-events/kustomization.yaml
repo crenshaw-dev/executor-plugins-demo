@@ -1,4 +1,4 @@
-namespace: argo-events
+namespace: argo-test
 
 resources:
   - https://raw.githubusercontent.com/argoproj/argo-events/stable/manifests/install.yaml
