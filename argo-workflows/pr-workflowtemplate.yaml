@@ -5,7 +5,7 @@ metadata:
 spec:
   arguments:
     parameters:
-      - name: issue-number
+      - name: body
   templates:
     - name: main
       steps:
@@ -13,7 +13,7 @@ spec:
             template: get-diff
             parameters:
               - name: issue-number
-                value: "{{workflow.parameters.issue-number}}"
+                value: "{{workflow.parameters.body}}"
         - - name: comment
             template: comment
             arguments:

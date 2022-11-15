@@ -37,5 +37,5 @@ Configure a webhook to point to `https://<your public IP address>/push`.
 * Only enable Pull request events
 
 ```shell
-kubectl create secret generic github-token --from-file token --from-file -n argo-events
+kubectl create secret generic github-access --from-file token --from-file secret -n argo-events
 ```
